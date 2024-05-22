@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-image: radial-gradient(navy, skyblue);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+}
+
+h1 {
+    margin: auto;
+    margin-top: 10rem;
+}
+
+.stopwatch-container {
+
+    background-color: white;
+    width: 400px;
+    height: 200px;
+    margin: auto;
+    border-radius: 10px;
+    border: 2px solid black;
+    display: flex;
+}
+
+.stopwatch-inner-container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+
+
+}
+
+.time-container {
+    display: flex;
+    margin: 1rem;
+}
+
+.control-container {
+    display: flex;
+    margin: auto;
+}
+
+.control-container .play-pause {
+    width: 2rem;
+    padding-left: 3px;
+    transform: translateY(7px);
+    height: 2rem;
+
+
+}
+
+.pause {
+    background-color: green;
+    color: white;
+}
+
+.play {
+    background-color: orange;
+    color: white;
+
+}
+
+
+
+.reset {
+    margin-bottom: 20px;
+}
+
+.control-container .play-pause,
+.reset {
+    margin: 8px;
+    cursor: pointer;
+
+
+}
+
+.time {
+    margin: 2px;
+
+}
+
+.orange {
+    background-color: orange;
+}

@@ -1,0 +1,157 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stopWatch Project/stopWatch.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- <script defer src="/stopWatch Project/stopWatch.js"></script> -->
+</head>
+
+<body>
+    <!-- the HTML code for external javaScript -->
+
+    <h1>stopWatch</h1>
+
+    <div class="stopwatch-container">
+        <div class="stopwatch-inner-container">
+            <div class="time-container">
+                00:00:00
+            </div>
+            <div class="control-container">
+                <button class="play-pause pause"><i class="fa-solid fa-play"></i></button>
+                <button class="reset">🔄</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- the HTML code for external javaScript (unComment the script link tag inside the <head> element above -->
+
+    <!-- <h1>stopWatch</h1>
+
+    <div class="stopwatch-container">
+        <div class="stopwatch-inner-container">
+            <div class="time-container">
+                <div class="hour time">
+                    00
+                </div>
+                :
+                <div class="minute time">
+                    00
+                </div>
+                :
+                <div class="second time">
+                    00
+                </div>
+            </div>
+            <div class="control-container">
+                <div class="play-pause pause"><i class="fa-solid fa-play"></i></div>
+                <div class="reset">🔄</div>
+            </div>
+
+        </div>
+
+    </div> -->
+</body>
+<script>
+
+    let time = document.querySelector('.time-container')
+    let playPause = document.querySelector('.play-pause')
+    let reset = document.querySelector('.reset')
+
+
+
+
+    let seconds = 0;
+    let minutes = 0;
+    let hours = 0
+
+    let intervalVariable = null
+
+    let startWatch = false
+
+
+    playPause.addEventListener('click', stopWatchfunction)
+
+
+    function stopWatchfunction() {
+
+
+        if (startWatch == false) {
+            intervalVariable = setInterval(() => {
+
+                seconds++
+                if (seconds % 15 === 0) {
+
+                    seconds = 0;
+                    minutes++
+
+
+                    if (minutes % 15 === 0) {
+                        minutes = 0
+                        hours++;
+
+
+                    }
+
+                }
+                if (seconds < 10) {
+                    seconds = '0' + Number(seconds)
+                }
+                if (minutes < 10) {
+                    minutes = '0' + Number(minutes)
+
+                }
+                if (hours < 10) {
+                    hours = '0' + Number(hours)
+                }
+                playPause.innerHTML = `<i class="fa-solid fa-play"></i>`
+                playPause.style.backgroundColor = 'green'
+
+
+
+                time.innerText = hours + ":" + minutes + ":" + seconds
+
+
+                startWatch = true
+            }, 1000)
+        }
+
+
+        else if (startWatch == true) {
+            clearInterval(intervalVariable)
+            startWatch = false
+            playPause.innerHTML = `<i class="fa-solid fa-pause"></i>`
+            playPause.style.paddingLeft = '6px'
+            playPause.style.backgroundColor = 'orange'
+
+        }
+
+
+
+    }
+
+
+
+
+    reset.addEventListener('click', () => {
+        minutes = 0;
+        seconds = 0
+        hours = 0
+
+        time.innerText = '00:00:00'
+        clearInterval(intervalVariable)
+
+        startWatch = false;
+
+    })
+
+</script>
+
+</html>
